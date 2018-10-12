@@ -1,0 +1,62 @@
+{
+    "name": "PaymentGroup",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "ongoing",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "settled",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "bill",
+            "otherEntityName": "bill",
+            "otherEntityRelationshipName": "paymentGroup"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "paymentRequest",
+            "otherEntityName": "paymentRequest",
+            "otherEntityRelationshipName": "group"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "author",
+            "otherEntityName": "member",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "member",
+            "otherEntityName": "member",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20181012141630",
+    "entityTableName": "payment_group",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

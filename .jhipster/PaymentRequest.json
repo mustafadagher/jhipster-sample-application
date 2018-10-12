@@ -1,0 +1,50 @@
+{
+    "name": "PaymentRequest",
+    "fields": [
+        {
+            "fieldName": "amount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "settled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "token",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "from",
+            "otherEntityName": "member",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "to",
+            "otherEntityName": "member",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "group",
+            "otherEntityName": "paymentGroup",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181012141632",
+    "entityTableName": "payment_request",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

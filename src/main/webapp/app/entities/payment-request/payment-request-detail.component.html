@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paymentRequest">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.detail.title">Payment Request</span> {{paymentRequest.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.amount">Amount</span></dt>
+                <dd>
+                    <span>{{paymentRequest.amount}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.settled">Settled</span></dt>
+                <dd>
+                    <span>{{paymentRequest.settled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.url">Url</span></dt>
+                <dd>
+                    <span>{{paymentRequest.url}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.token">Token</span></dt>
+                <dd>
+                    <span>{{paymentRequest.token}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.from">From</span></dt>
+                <dd>
+                    <div *ngIf="paymentRequest.from">
+                        <a [routerLink]="['/member', paymentRequest.from?.id, 'view']">{{paymentRequest.from?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.to">To</span></dt>
+                <dd>
+                    <div *ngIf="paymentRequest.to">
+                        <a [routerLink]="['/member', paymentRequest.to?.id, 'view']">{{paymentRequest.to?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.group">Group</span></dt>
+                <dd>
+                    <div *ngIf="paymentRequest.group">
+                        <a [routerLink]="['/payment-group', paymentRequest.group?.id, 'view']">{{paymentRequest.group?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/payment-request', paymentRequest.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

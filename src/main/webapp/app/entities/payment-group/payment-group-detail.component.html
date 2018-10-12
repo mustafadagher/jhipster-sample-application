@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paymentGroup">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.paymentGroup.detail.title">Payment Group</span> {{paymentGroup.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentGroup.name">Name</span></dt>
+                <dd>
+                    <span>{{paymentGroup.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentGroup.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{paymentGroup.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentGroup.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{paymentGroup.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentGroup.ongoing">Ongoing</span></dt>
+                <dd>
+                    <span>{{paymentGroup.ongoing}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentGroup.settled">Settled</span></dt>
+                <dd>
+                    <span>{{paymentGroup.settled}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentGroup.author">Author</span></dt>
+                <dd>
+                    <div *ngIf="paymentGroup.author">
+                        <a [routerLink]="['/member', paymentGroup.author?.id, 'view']">{{paymentGroup.author?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.paymentGroup.member">Member</span></dt>
+                <dd>
+                    <span *ngFor="let member of paymentGroup.members; let last = last">
+                        <a [routerLink]="['/member', member?.id, 'view' ]">{{member.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/payment-group', paymentGroup.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

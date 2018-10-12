@@ -1,0 +1,78 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.home.title">Payment Requests</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-payment-request" [routerLink]="['/payment-request/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.home.createLabel">
+            Create new Payment Request
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="paymentRequests">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.amount">Amount</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.settled">Settled</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.url">Url</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.token">Token</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.from">From</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.to">To</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.group">Group</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let paymentRequest of paymentRequests ;trackBy: trackId">
+                <td><a [routerLink]="['/payment-request', paymentRequest.id, 'view' ]">{{paymentRequest.id}}</a></td>
+                <td>{{paymentRequest.amount}}</td>
+                <td>{{paymentRequest.settled}}</td>
+                <td>{{paymentRequest.url}}</td>
+                <td>{{paymentRequest.token}}</td>
+                <td>
+                    <div *ngIf="paymentRequest.from">
+                        <a [routerLink]="['../member', paymentRequest.from?.id, 'view' ]" >{{paymentRequest.from?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paymentRequest.to">
+                        <a [routerLink]="['../member', paymentRequest.to?.id, 'view' ]" >{{paymentRequest.to?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paymentRequest.group">
+                        <a [routerLink]="['../payment-group', paymentRequest.group?.id, 'view' ]" >{{paymentRequest.group?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/payment-request', paymentRequest.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/payment-request', paymentRequest.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'payment-request/'+ paymentRequest.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

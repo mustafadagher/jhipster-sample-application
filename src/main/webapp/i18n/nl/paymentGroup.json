@@ -1,0 +1,30 @@
+
+{
+    "jhipsterSampleApplicationApp": {
+        "paymentGroup" : {
+            "home": {
+                "title": "Payment Groups",
+                "createLabel": "Maak een nieuwe Payment Group",
+                "createOrEditLabel": "Maak of wijzig een Payment Group"
+            },
+            "created": "A new Payment Group is created with identifier {{ param }}",
+            "updated": "A Payment Group is updated with identifier {{ param }}",
+            "deleted": "A Payment Group is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Payment Group {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Payment Group"
+            },
+            "name": "Name",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "ongoing": "Ongoing",
+            "settled": "Settled",
+            "bill": "Bill",
+            "paymentRequest": "Payment Request",
+            "author": "Author",
+            "member": "Member"
+        }
+    }
+}

@@ -1,0 +1,72 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterSampleApplicationApp.bill.home.title">Bills</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-bill" [routerLink]="['/bill/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterSampleApplicationApp.bill.home.createLabel">
+            Create new Bill
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="bills">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.bill.description">Description</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.bill.amount">Amount</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.bill.paymentDate">Payment Date</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.bill.mutationId">Mutation Id</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.bill.owner">Owner</span></th>
+            <th><span jhiTranslate="jhipsterSampleApplicationApp.bill.paymentGroup">Payment Group</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bill of bills ;trackBy: trackId">
+                <td><a [routerLink]="['/bill', bill.id, 'view' ]">{{bill.id}}</a></td>
+                <td>{{bill.description}}</td>
+                <td>{{bill.amount}}</td>
+                <td>{{bill.paymentDate | date:'medium'}}</td>
+                <td>{{bill.mutationId}}</td>
+                <td>
+                    <div *ngIf="bill.owner">
+                        <a [routerLink]="['../member', bill.owner?.id, 'view' ]" >{{bill.owner?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="bill.paymentGroup">
+                        <a [routerLink]="['../payment-group', bill.paymentGroup?.id, 'view' ]" >{{bill.paymentGroup?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/bill', bill.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/bill', bill.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bill/'+ bill.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

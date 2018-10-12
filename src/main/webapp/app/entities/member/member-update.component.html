@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-member-heading" jhiTranslate="jhipsterSampleApplicationApp.member.home.createOrEditLabel">Create or edit a Member</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!member.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="member.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.member.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="member.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.member.iban" for="field_iban">Iban</label>
+                    <input type="text" class="form-control" name="iban" id="field_iban"
+                        [(ngModel)]="member.iban" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.member.mobile" for="field_mobile">Mobile</label>
+                    <input type="text" class="form-control" name="mobile" id="field_mobile"
+                        [(ngModel)]="member.mobile" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.member.platformToken" for="field_platformToken">Platform Token</label>
+                    <input type="text" class="form-control" name="platformToken" id="field_platformToken"
+                        [(ngModel)]="member.platformToken" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.member.userToken" for="field_userToken">User Token</label>
+                    <input type="text" class="form-control" name="userToken" id="field_userToken"
+                        [(ngModel)]="member.userToken" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.member.bankAccountToken" for="field_bankAccountToken">Bank Account Token</label>
+                    <input type="text" class="form-control" name="bankAccountToken" id="field_bankAccountToken"
+                        [(ngModel)]="member.bankAccountToken" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.member.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" [(ngModel)]="member.user" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === member.user?.id ? member.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.member.member" for="field_member">Member</label>
+                    <select class="form-control" id="field_member" name="member" [(ngModel)]="member.member" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="memberOption.id === member.member?.id ? member.member : memberOption" *ngFor="let memberOption of members; trackBy: trackMemberById">{{memberOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

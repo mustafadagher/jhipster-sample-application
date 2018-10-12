@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="member">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.member.detail.title">Member</span> {{member.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.member.name">Name</span></dt>
+                <dd>
+                    <span>{{member.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.member.iban">Iban</span></dt>
+                <dd>
+                    <span>{{member.iban}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.member.mobile">Mobile</span></dt>
+                <dd>
+                    <span>{{member.mobile}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.member.platformToken">Platform Token</span></dt>
+                <dd>
+                    <span>{{member.platformToken}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.member.userToken">User Token</span></dt>
+                <dd>
+                    <span>{{member.userToken}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.member.bankAccountToken">Bank Account Token</span></dt>
+                <dd>
+                    <span>{{member.bankAccountToken}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.member.user">User</span></dt>
+                <dd>
+                    {{member.user?.id}}
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.member.member">Member</span></dt>
+                <dd>
+                    <div *ngIf="member.member">
+                        <a [routerLink]="['/member', member.member?.id, 'view']">{{member.member?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/member', member.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

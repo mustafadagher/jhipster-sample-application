@@ -1,0 +1,44 @@
+{
+    "name": "Bill",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "paymentDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "mutationId",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "owner",
+            "otherEntityName": "member",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "paymentGroup",
+            "otherEntityName": "paymentGroup",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181012141631",
+    "entityTableName": "bill",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

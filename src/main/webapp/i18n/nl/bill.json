@@ -1,0 +1,27 @@
+
+{
+    "jhipsterSampleApplicationApp": {
+        "bill" : {
+            "home": {
+                "title": "Bills",
+                "createLabel": "Maak een nieuwe Bill",
+                "createOrEditLabel": "Maak of wijzig een Bill"
+            },
+            "created": "A new Bill is created with identifier {{ param }}",
+            "updated": "A Bill is updated with identifier {{ param }}",
+            "deleted": "A Bill is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Bill {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Bill"
+            },
+            "description": "Description",
+            "amount": "Amount",
+            "paymentDate": "Payment Date",
+            "mutationId": "Mutation Id",
+            "owner": "Owner",
+            "paymentGroup": "Payment Group"
+        }
+    }
+}

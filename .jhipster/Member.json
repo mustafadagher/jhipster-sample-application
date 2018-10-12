@@ -1,0 +1,60 @@
+{
+    "name": "Member",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "iban",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mobile",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "platformToken",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "userToken",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bankAccountToken",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "member"
+        },
+        {
+            "relationshipName": "member",
+            "otherEntityName": "member",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "friend",
+            "otherEntityName": "member",
+            "otherEntityRelationshipName": "member"
+        }
+    ],
+    "changelogDate": "20181012141629",
+    "entityTableName": "member",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

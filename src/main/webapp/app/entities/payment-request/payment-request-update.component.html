@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-payment-request-heading" jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.home.createOrEditLabel">Create or edit a Payment Request</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!paymentRequest.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="paymentRequest.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.amount" for="field_amount">Amount</label>
+                    <input type="number" class="form-control" name="amount" id="field_amount"
+                        [(ngModel)]="paymentRequest.amount" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.settled" for="field_settled">Settled</label>
+                    <input type="checkbox" class="form-control" name="settled" id="field_settled"
+                        [(ngModel)]="paymentRequest.settled" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.url" for="field_url">Url</label>
+                    <input type="text" class="form-control" name="url" id="field_url"
+                        [(ngModel)]="paymentRequest.url" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.token" for="field_token">Token</label>
+                    <input type="text" class="form-control" name="token" id="field_token"
+                        [(ngModel)]="paymentRequest.token" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.from" for="field_from">From</label>
+                    <select class="form-control" id="field_from" name="from" [(ngModel)]="paymentRequest.from" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="memberOption.id === paymentRequest.from?.id ? paymentRequest.from : memberOption" *ngFor="let memberOption of members; trackBy: trackMemberById">{{memberOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.to" for="field_to">To</label>
+                    <select class="form-control" id="field_to" name="to" [(ngModel)]="paymentRequest.to" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="memberOption.id === paymentRequest.to?.id ? paymentRequest.to : memberOption" *ngFor="let memberOption of members; trackBy: trackMemberById">{{memberOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.paymentRequest.group" for="field_group">Group</label>
+                    <select class="form-control" id="field_group" name="group" [(ngModel)]="paymentRequest.group" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="paymentGroupOption.id === paymentRequest.group?.id ? paymentRequest.group : paymentGroupOption" *ngFor="let paymentGroupOption of paymentgroups; trackBy: trackPaymentGroupById">{{paymentGroupOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

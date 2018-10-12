@@ -1,0 +1,28 @@
+
+{
+    "jhipsterSampleApplicationApp": {
+        "paymentRequest" : {
+            "home": {
+                "title": "Payment Requests",
+                "createLabel": "Maak een nieuwe Payment Request",
+                "createOrEditLabel": "Maak of wijzig een Payment Request"
+            },
+            "created": "A new Payment Request is created with identifier {{ param }}",
+            "updated": "A Payment Request is updated with identifier {{ param }}",
+            "deleted": "A Payment Request is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Payment Request {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Payment Request"
+            },
+            "amount": "Amount",
+            "settled": "Settled",
+            "url": "Url",
+            "token": "Token",
+            "from": "From",
+            "to": "To",
+            "group": "Group"
+        }
+    }
+}
