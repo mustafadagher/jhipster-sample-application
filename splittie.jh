@@ -1,0 +1,50 @@
+entity Member {
+    name String,
+    iban String,
+    mobile String,
+    platformToken String,
+    userToken String,
+    bankAccountToken String
+}
+
+entity PaymentGroup {
+	name String,
+	startDate Instant,
+	endDate Instant,
+	ongoing Boolean,
+    settled Boolean
+}
+
+entity Bill {
+	description String,
+    amount Double,
+	paymentDate Instant
+    mutationId String
+}
+
+entity PaymentRequest {
+	amount Double,
+    settled Boolean,
+    url String,
+    token String
+}
+relationship OneToOne {
+	Member{user} to User
+}
+
+relationship OneToMany {
+	PaymentGroup to Bill,
+    Member{friend} to Member,
+    PaymentGroup to PaymentRequest{group}
+}
+
+relationship ManyToOne {
+	PaymentGroup{author} to Member,
+	Bill{owner} to Member,
+    PaymentRequest{from} to Member,
+    PaymentRequest{to} to Member
+}
+
+relationship ManyToMany {
+	PaymentGroup{member} to Member
+}
